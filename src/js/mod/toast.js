@@ -1,7 +1,7 @@
-
+import '../../scss/mod/toast.scss';
 var toastTimer = null;
 
-export function Toast(str, callback, time) {
+export default function Toast(str, callback, time) {
     var elemToast = $('#js-page-toast');
     elemToast.html(str).addClass('show');
     clearTimeout(toastTimer);

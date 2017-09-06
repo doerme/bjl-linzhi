@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>test</title>
+        <title>赏金骰宝</title>
         <%= require('html!./partials/header.html')  %>
     </head>
     <body>
-        <%= require('html!./partials/toast.html')  %>
-        <%= require('html!./partials/loading.html')  %>
-        
-        <div id="test"></div>
-        <img src="<%= require('./images/fish.png')  %>" alt="">
+        <div class="game-loading">
+            <a href="javascript:;" class="butn-join js-game-join"></a>
+            <div class="process-bg">
+                <p class="js-process"></p> 
+            </div> 
+        </div>
+        <div class="game-main">
+            <%= require('html!./partials/toast.html')  %>
+            <%= require('html!./partials/loading.html')  %>
+            
+            <%= require('html!./partials/pageHeader.html')  %>
+            <%= require('html!./partials/main.html')  %>
+            <%= require('html!./partials/dialog.html')  %>
+        </div>
+        <%= require('html!./partials/coin.html')  %>
+        <div id="js-img-all" style="display:none;">
+            <img src="<%= require('./images/betting-1.png')  %>" alt="">            
+            <img src="<%= require('./images/betting-2.png')  %>" alt="">            
+            <img src="<%= require('./images/betting-3.png')  %>" alt="">            
+            <img src="<%= require('./images/betting-4.png')  %>" alt="">            
+            <img src="<%= require('./images/bg.png')  %>" alt="">            
+            <img src="<%= require('./images/butn-ok.png')  %>" alt="">            
+            <img src="<%= require('./images/close.png')  %>" alt="">            
+            <img src="<%= require('./images/dialog-lotteryed.png')  %>" alt="">            
+            <img src="<%= require('./images/jinbi.png')  %>" alt="">            
+            <img src="<%= require('./images/record-bg.png')  %>" alt="">                     
+            <img src="<%= require('./images/voice-close.png')  %>" alt="">            
+            <img src="<%= require('./images/voice.png')  %>" alt="">            
+            <img src="<%= require('./images/zs.png')  %>" alt="">            
+            <img src="<%= require('./images/logo.png')  %>" alt="">            
+        </div>
+        <%= require('html!./partials/scripts.html')  %>
     </body>
 </html>

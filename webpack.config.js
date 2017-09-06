@@ -5,39 +5,43 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // var HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
-var plugins = null;
+var defaults = [
+    new CopyWebpackPlugin([{
+        from: __dirname + '/src/js/lib',
+        to: __dirname + '/bjl/js/lib'
+    }, {
+        from: __dirname + '/src/misc',
+        to: __dirname + '/bjl/misc'
+    }])
+];
+var plugins ;
 const buildEventName = process.env.npm_lifecycle_event
-if (buildEventName === 'buil') {
-    
-    plugins = [
-        new CopyWebpackPlugin([{
-            from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
-        },{
-            from: __dirname + '/src/misc',
-            to: __dirname + '/dist/misc'
-        }]),
+
+if (buildEventName === 'build') {
+
+    plugins = defaults.concat([
+
         new HtmlWebpackPlugin({
             template: './index.html',
             inlineSource: '.(css|js)$'
         }),
         new HtmlWebpackInlineSourcePlugin(),
         new ExtractTextPlugin("css/styles.css")
-    ];
+    ]);
 } else {
-    plugins = [
+    plugins = defaults.concat([
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
-        },{
+            to: __dirname + '/bjl/js/lib'
+        }, {
             from: __dirname + '/src/misc',
-            to: __dirname + '/dist/misc'
+            to: __dirname + '/bjl/misc'
         }]),
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
         new ExtractTextPlugin("css/styles.css")
-    ];
+    ]);
 }
 module.exports = {
     context: __dirname + "/src",
@@ -45,9 +49,9 @@ module.exports = {
         app: "./js/app.js"
     },
     output: {
-        path: __dirname + "/dist",
+        path: __dirname + "/bjl",
         filename: "js/[name].bundle.js",
-        publicPath: '/dist/',
+        publicPath: '/bjl/',
         library: 'App'
     },
     module: {
@@ -71,7 +75,7 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 use: ["file-loader?limit=10000&name=[path][name].[ext]?v=[hash]"]
             },
-             {
+            {
                 test: /\.tpl$/,
                 use: ["art-template"]
             }

@@ -1,0 +1,20 @@
+<script src="/bjl/js/lib/zepto.min.js"></script>
+<script src="/bjl/js/lib/fastclick.js"></script>
+<script src="/bjl/js/lib/sound.js"></script>
+<!--@if (strpos(\Jenssegers\Agent\Facades\Agent::getUserAgent(), 'MicroMessenger') !== false) 
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    wx.config(<?php echo app('wechat')->js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage')) ?>);
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            link: 'http://ga.cloudxt.cn/bjl/page',
+            imgUrl: 'http://ga.cloudxt.cn/bjl/images/logo.png'
+        });
+        wx.onMenuShareAppMessage({
+            desc: '百家乐，不出门也能到澳',
+            link: 'http://ga.cloudxt.cn/bjl/page/',
+            imgUrl: 'http://ga.cloudxt.cn/bjl/images/logo.png'
+        });
+    });
+</script>
+@endif-->
